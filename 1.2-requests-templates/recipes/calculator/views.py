@@ -22,12 +22,12 @@ DATA = {
 
 def get_recipe(request, recipe):
     quantity = int(request.GET.get('servings', 1))
-    new = {}
+    final_recipe = {}
     if recipe in DATA.keys():
         for name, value in DATA[recipe].items():
-            new[name] = value * quantity
+            final_recipe[name] = value * quantity
     context = {
-        'recipe': new
+        'recipe': final_recipe
     }
     return render(request, 'calculator/index.html', context)
 
